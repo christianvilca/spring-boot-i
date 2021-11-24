@@ -62,6 +62,26 @@ public class ChristianApplication implements CommandLineRunner {
         LOGGER.info("Usuario con query method findByEmailAndName" +
             userRepository.findByEmailAndName("daniela@mail.com", "Daniela")
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado")));
+
+        userRepository.findByNameLike("%user%")
+                .stream()
+                .forEach(user -> LOGGER.info("Usuario findByNameLike: " + user));
+
+        userRepository.findByNameOrEmail(null, "user10@mail.com")
+                .stream()
+                .forEach(user -> LOGGER.info("Usuario findByNameOrEmail: " + user));
+
+        userRepository.findByBirthdateBetween(LocalDate.of(2021,3, 1), LocalDate.of(2021, 4, 2))
+                .stream()
+                .forEach(user -> LOGGER.info("Usuario findByBirthdateBetween: " + user));
+
+        userRepository.findByNameLikeOrderByIdDesc("%user%")
+                .stream()
+                .forEach(user -> LOGGER.info("Usuario findByNameLikeOrderByIdDesc: " + user));
+
+        userRepository.findByNameContainingOrderByIdDesc("user")
+                .stream()
+                .forEach(user -> LOGGER.info("Usuario findByNameContainingOrderByIdDesc: " + user));
     }
 
     @Override

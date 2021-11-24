@@ -54,6 +54,14 @@ public class ChristianApplication implements CommandLineRunner {
         userRepository.findAndSort("user", Sort.by("id").descending())
             .stream()
             .forEach(user -> LOGGER.info("Usuario con metodo sort: "+user));
+
+        userRepository.findByName("John")
+            .stream()
+            .forEach(user -> LOGGER.info("Usuario con query method " + user));
+
+        LOGGER.info("Usuario con query method findByEmailAndName" +
+            userRepository.findByEmailAndName("daniela@mail.com", "Daniela")
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado")));
     }
 
     @Override
@@ -65,7 +73,7 @@ public class ChristianApplication implements CommandLineRunner {
 
     private void saveUserInDataBase(){
         User user1 = new User("John", "john@mail.com", LocalDate.of(2021, 03, 20));
-        User user2 = new User("Julie", "julie@mail.com", LocalDate.of(2021, 05, 21));
+        User user2 = new User("John", "julie@mail.com", LocalDate.of(2021, 05, 21));
         User user3 = new User("Daniela", "daniela@mail.com", LocalDate.of(2021, 07, 21));
         User user4 = new User("user4", "user4@mail.com", LocalDate.of(2021, 07, 21));
         User user5 = new User("user5", "user5@mail.com", LocalDate.of(2021, 11, 11));

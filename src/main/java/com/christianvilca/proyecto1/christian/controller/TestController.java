@@ -11,7 +11,7 @@ public class TestController {
     @RequestMapping // Acepta todas las solicitudes dentro del metodo a nivel http
     @ResponseBody // Responder un cuerpo a nivel del servicio
     public ResponseEntity<String> holaMundo() {
-        return new ResponseEntity<>("Hello from controller", HttpStatus.OK);
+        return new ResponseEntity<>("Hello from controller un cambio 2-", HttpStatus.OK);
     }
 
 }

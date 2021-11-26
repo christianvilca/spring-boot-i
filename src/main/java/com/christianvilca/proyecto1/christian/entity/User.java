@@ -28,7 +28,8 @@ public class User {
     // @JsonBackReference is the back part of reference – it will be omitted from serialization.
     private List<Post> posts = new ArrayList<>();
 
-    public User() {
+    public User(long id) {
+        this.id = id;
     }
 
     public User(String name, String email, LocalDate birthdate, List<Post> posts) {

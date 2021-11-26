@@ -82,6 +82,12 @@ public class ChristianApplication implements CommandLineRunner {
         userRepository.findByNameContainingOrderByIdDesc("user")
                 .stream()
                 .forEach(user -> LOGGER.info("Usuario findByNameContainingOrderByIdDesc: " + user));
+
+        // El usuario esta representando a nivel de Clase UserDto y no nivel de Entidad User
+        LOGGER.info("El usuario a partir del named parameter es:" +
+                userRepository.getAllByBirthDateAndEmail(LocalDate.of(2021, 07, 21), "daniela@mail.com")
+                        .orElseThrow(() -> new RuntimeException("Usuario no encontrado - getAllByBirthDateAndEmail:")));
+
     }
 
     @Override

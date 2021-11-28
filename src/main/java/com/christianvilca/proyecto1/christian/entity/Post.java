@@ -1,5 +1,7 @@
 package com.christianvilca.proyecto1.christian.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Post {
     private String description;
 
     @ManyToOne // Un usuario puede tener muchos post
+    @JsonBackReference
     private User user;
 
     public Post() {

@@ -104,7 +104,7 @@ public class ChristianApplication implements CommandLineRunner {
     private void saveWithErrorTransactional(){
         User test1 = new User("test1Transactional", "test1Transactional@gmail.com", LocalDate.now());
         User test2 = new User("test2Transactional", "test2Transactional@gmail.com", LocalDate.now());
-        User test3 = new User("test3Transactional", "test1Transactional@gmail.com", LocalDate.now());
+        User test3 = new User("test3Transactional", "test3Transactional@gmail.com", LocalDate.now());
         User test4 = new User("test4Transactional", "test4Transactional@gmail.com", LocalDate.now());
 
         List<User> users = Arrays.asList(test1, test2, test3, test4);
